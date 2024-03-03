@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 // import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, } from "@/components/ui/form";
 import { Input } from "@/components/ui/input"
-import { singupValidation as singinValidation } from '@/lib/validation';
+import {  singinValidation } from '@/lib/validation';
 import Loader from '@/components/shared/Loader';
 import { Link , useNavigate} from 'react-router-dom';
 import { useToast } from "@/components/ui/use-toast"
@@ -21,7 +21,7 @@ export const SigninForm = () => {
 
   // const {mutateAsync:createUserAccount, isPending:isCreatingUser}= useCreateUserAccount()
 
-  const {mutateAsync:signInAccount, isPending:isSigningIn}= useSignInAccount()
+  const {mutateAsync:signInAccount}= useSignInAccount()
 
 
   // 1. Define your form.
@@ -105,12 +105,12 @@ export const SigninForm = () => {
         <Button type="submit"  className='shad-button_primary'>
           {isUserLoading?(<div className='flex-center gap-2'>
              <Loader/> Loading...
-          </div>):'Sign up '}
+          </div>):'Sign in '}
         </Button>
         <p className='text-small-regular text-light-2 text-center mt-2'>
 
-          Already have an account ? <Link to='/sign-in' className='text-primary-500
-          text-small-semibold ml-1'>Log in</Link>
+          Don't have an account ? <Link to='/sign-up' className='text-primary-500
+          text-small-semibold ml-1'>sign up </Link>
         </p>
       </form>
       </div>

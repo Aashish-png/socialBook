@@ -47,41 +47,44 @@ export async function saveUserToDB(user: {
 
     return newUser;
   } catch (error) {
-    console.log("error saving db", error)
+    console.log("error saving db", error);
   }
 }
 
-export async function signInAccount(user:{email:string,password:string}){
+export async function signInAccount(user: { email: string; password: string }) {
+  try {
+    const session = await account.createEmailSession(user.email, user.password);
 
-    try {
-        const session =await account.createEmailSession(user.email, user.password)
+    return session;
+  } catch (error) {
+    console.log("error sign in account");
+  }
+}
 
-        return session
-    } catch (error) {
-        console.log("error sign in account")
-    }
+export async function getCurrentUser() {
+  try {
+    const currentAccount = await account.get();
+    if (!currentAccount) throw Error;
+
+    const currentUser = await database.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      [Query.equal("accountId", currentAccount.$id)]
+    );
+    if (!currentUser) throw Error;
+
+    return currentUser.documents[0];
+  } catch (error) {}
 }
 
 
-export async function getCurrentUser(){
-    try {
-         const currentAccount= await account.get();
-         if(!currentAccount)throw Error;
+export async function signOutAccount() {
 
-        const currentUser= await database.listDocuments(
-            appwriteConfig.databaseId,
-            appwriteConfig.userCollectionId,
-            [Query.equal('accountId',currentAccount.$id)]
-
-        );
-        if(!currentUser) throw Error;
-
-        return currentUser.documents[0];
-
-
-    } catch (error) {
-        
-    }
-
-
+  try {
+    const session = await account.deleteSession('current');
+    return session
+  } catch (error) {
+    console.log("error signning out  ", error)
+  }
+  
 }
