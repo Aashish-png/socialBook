@@ -2,11 +2,12 @@ import Loader from '@/components/shared/Loader';
 import PostCard from '@/components/shared/PostCard';
 import { useGetRecentPost } from '@/lib/React-query/queriesAndMutation';
 import { Models } from 'appwrite';
-import React from 'react'
+import { Divide } from 'lucide-react';
 
 const Home = () => {
   
 
+  // const { data:posts, isPending:isPostLoading, isError: isErrorPosts}= useGetRecentPost();
   const { data:posts, isPending:isPostLoading, isError: isErrorPosts}= useGetRecentPost();
 
 
@@ -23,11 +24,9 @@ const Home = () => {
               <PostCard post={post} key={post.caption} />
             ))}
             
-
             </ul>
-
-
           )}
+          {isErrorPosts && ( <h2  className='h3-bold md:h2-bold text-left w-full' > Something went wrong Please try again later  </h2>)}
       </div>
       </div>
     </div>

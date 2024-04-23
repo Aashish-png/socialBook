@@ -1,8 +1,6 @@
 import { INewPost, INewUser, IUpdatePost } from "@/types";
 import { account, appwriteConfig, avatars, database, storage } from "./config";
 import { ID, Query } from "appwrite";
-import exp from "constants";
-import { error } from "console";
 
 export async function createUserAccount(user: INewUser) {
   try {
@@ -76,7 +74,10 @@ export async function getCurrentUser() {
     if (!currentUser) throw Error;
 
     return currentUser.documents[0];
-  } catch (error) {}
+  } catch (error) {
+
+    console.log("error signning out  ", error);
+  }
 }
 
 export async function signOutAccount() {

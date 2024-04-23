@@ -10,7 +10,7 @@ import {  singinValidation } from '@/lib/validation';
 import Loader from '@/components/shared/Loader';
 import { Link , useNavigate} from 'react-router-dom';
 import { useToast } from "@/components/ui/use-toast"
-import { useCreateUserAccount, useSignInAccount} from '@/lib/React-query/queriesAndMutation';
+import {  useSignInAccount} from '@/lib/React-query/queriesAndMutation';
 import { useUserContext } from '@/context/AuthContext';
 
 export const SigninForm = () => {
@@ -69,7 +69,7 @@ export const SigninForm = () => {
   return (
     <Form {...form}>
       <div className='sm:w-420 flex-center flex-col'>
-          <img src="/assets/images/logo.svg" alt="logo " />
+          <img src="/assets/images/logo.png" alt="logo " />
           <h2 className='h3-bold md:h2-bold pt-5 sm:pt-12'> Log in to your Account </h2>
           <p className='text-light-3 small-medium md:base-regular'>Welcome back Please enter your details </p>
       <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5 w-full mt-4">

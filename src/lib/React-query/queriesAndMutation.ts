@@ -3,7 +3,7 @@ import {
   useMutation,
   useInfiniteQuery,
   useQueryClient,
-  useSuspenseInfiniteQuery,
+  // useSuspenseInfiniteQuery,
 } from "@tanstack/react-query";
 import {
   SavePost,
@@ -164,7 +164,7 @@ export const useDeletePost = () => {
   return useMutation({
     mutationFn: ({ postId, imageId }: { postId: string; imageId: string }) =>
       deletePost(postId, imageId),
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
       });

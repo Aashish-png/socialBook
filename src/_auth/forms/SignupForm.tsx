@@ -49,6 +49,7 @@ export const SignupForm = () => {
         title: "Sign up failed. Please try again",
       })
     }
+    isSigningIn
     const session = await signInAccount({
       email:values.email,
       password:values.password,
@@ -57,7 +58,7 @@ export const SignupForm = () => {
       return toast({title:'sign in failed, Please try again.'})
     }
 
-
+    isUserLoading
     const isLoggedIn= await checkAuthUser()
     if(isLoggedIn){
       form.reset();
@@ -132,7 +133,7 @@ export const SignupForm = () => {
           )}
         />
         <Button type="submit"  className='shad-button_primary'>
-          {isCreatingUser?(<div className='flex-center gap-2'>
+          {isCreatingUser || isSigningIn ?(<div className='flex-center gap-2'>
              <Loader/> Loading...
           </div>):'Sign up '}
         </Button>

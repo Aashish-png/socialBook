@@ -13,6 +13,9 @@
     @apply bg-dark-1 text-white min-h-screen font-inter;
   }
 }
+.shadow-custom {
+  filter: drop-shadow(9px 12px 23px rgba(3, 153, 191, 0.5)); /* Using rgba for transparency */
+}
 
 @layer utilities {
   /* TYPOGRAPHY */
@@ -218,8 +221,9 @@
   }
 
   /* Left sidebar */
+  /*  bg-dark-2 */
   .leftsidebar {
-    @apply hidden md:flex px-6 py-10 flex-col justify-between min-w-[270px] bg-dark-2;
+    @apply hidden md:flex px-6 py-10 flex-col justify-between min-w-[270px] bg-black border-r-2 border-solid border-[#0399bf];
   }
 
   .leftsidebar-link {
@@ -236,8 +240,9 @@
   }
 
   /* Topbar */
+  /*  bg-dark-2 */
   .topbar {
-    @apply sticky top-0 z-50 md:hidden bg-dark-2 w-full;
+    @apply sticky top-0 z-50 md:hidden w-full bg-black border-b-2 border-solid border-[#0399bf];
   }
 
   /* User card */
@@ -266,10 +271,12 @@
   }
 
   /* Button */
-  .shad-button_primary {
+  /* .shad-button_primary {
+    @apply bg-primary-500 hover:bg-primary-500 text-light-1 flex gap-2 !important;
+  } */
+.shad-button_primary {
     @apply bg-primary-500 hover:bg-primary-500 text-light-1 flex gap-2 !important;
   }
-
   .shad-button_dark_4 {
     @apply h-12 bg-dark-4 px-5 text-light-1 flex gap-2 !important;
   }
