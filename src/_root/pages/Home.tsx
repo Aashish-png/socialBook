@@ -2,7 +2,6 @@ import Loader from '@/components/shared/Loader';
 import PostCard from '@/components/shared/PostCard';
 import { useGetRecentPost } from '@/lib/React-query/queriesAndMutation';
 import { Models } from 'appwrite';
-import { Divide } from 'lucide-react';
 
 const Home = () => {
   
