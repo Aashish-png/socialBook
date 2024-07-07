@@ -50,7 +50,7 @@ export const useCreatePost = () => {
   return useMutation({
     mutationFn: (post: INewPost) => createPost(post),
     onSuccess: () => {
-      queryClient.invalidateQueries({
+      queryClient.invalidateQueries({   // saving in catch // means updating in catch 
         queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
       });
     },
@@ -59,10 +59,12 @@ export const useCreatePost = () => {
 
 export const useGetRecentPost = () => {
   return useQuery({
-    queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
+    queryKey: [QUERY_KEYS.GET_RECENT_POSTS],/// checking in catch 
 
     queryFn: getRecentPosts,
-  });
+     staleTime: Infinity ,
+    
+  },);
 };
 
 export const useLikePost = () => {

@@ -19,6 +19,7 @@ const INITIAL_STATE = {
   setUser: () => {},
   setIsAuthenticated: () => {},
   checkAuthUser: async () => false as boolean,
+  // checkAndNavigate:()=>{}
 };
 
 const AuthContext = createContext<IContextType>(INITIAL_STATE);
@@ -27,7 +28,6 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate =useNavigate();
-
   const checkAuthUser = async () => {
     try {
       const currentAccount = await getCurrentUser();
